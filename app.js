@@ -4,7 +4,7 @@ const axios = require("axios");
 const app = express();
 const port = 3000;
 
-app.get("/:searchQuery", async (req, res) => {
+app.get("/stops/:searchQuery", async (req, res) => {
   try {
     const { searchQuery } = req.params;
 
@@ -13,6 +13,7 @@ app.get("/:searchQuery", async (req, res) => {
     );
     res.json(response.data);
   } catch (e) {
+    console.log(e);
     console.error("Error fetching data: ", e.message);
     res.status(500).json({
       error: "Failed to fetch data",
